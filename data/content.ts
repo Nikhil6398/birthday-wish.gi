@@ -136,7 +136,7 @@ export const content = {
   distanceParagraphs: [
     "Being far from you isn't easy, Tannu. Some days it's just a text that takes a little longer to send. Other days it's really feeling every kilometer that's between us.",
     "But distance hasn't shrunk how much I care, it's actually made me notice it more. Every call, every good morning text, every little update about your day means more than you probably know.",
-    "This part is temporary though. This October in Malang isn't just a date on a countdown, it's us finally getting to be in the same place again.",
+    "This part is temporary though. This november in delhi isn't just a date on a countdown, it's us finally getting to be in the same place again.",
   ] as string[],
 
   // --- When we meet again (bucket list for the reunion) ---
