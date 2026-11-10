@@ -171,7 +171,7 @@ export const content = {
   // the audio file itself, not a YouTube/Spotify/Apple Music page. A page
   // link (like music.youtube.com/watch?v=...) will not play; the <audio>
   // tag can only stream an actual .mp3/.ogg/.wav file.
-  songUrl: "https://radio.mediacp.eu/stream/lovemomentsradio" as string,
+  songUrl: "/music/about-you.mp3" as string,
   songTitle: "About You by The 1975",
 };
 
