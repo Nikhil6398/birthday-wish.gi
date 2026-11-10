@@ -30,7 +30,7 @@ const title = `Happy Birthday, ${content.partnerName}`;
 const description = "A little digital gift, made just for you 💛";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://birthday-jani.vercel.app"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://birthday-wish-gi-f4gx.vercel.app"),
   title,
   description,
   openGraph: {
