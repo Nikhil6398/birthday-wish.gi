@@ -72,7 +72,7 @@ export const content = {
   // --- Photos ---
   heroPhoto: {
     src: "https://i.ibb.co/d4MXbTJB/NT1.avif",
-    alt: "Ihzra and Jani smiling together",
+    alt: "Nick and Tannu sitting together",
     caption: "",
   } as Photo,
   closingPhoto: {
