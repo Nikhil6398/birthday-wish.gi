@@ -16,6 +16,7 @@ export type TimelineEvent = {
   description: string;
 };
 
+
 export const content = {
   // --- Identity ---
   partnerName: "Tannu",
@@ -51,6 +52,12 @@ export const content = {
   /** Optional hint shown on the lock screen to help them guess the PIN. Leave "" to hide it. */
   pinHint: "Hint: the day we came in relationship 💛",
 
+
+    // --- Heart touch animation ---
+  heartTouchEnabled: true,
+  heartTouchEmoji: "💗",
+  heartTouchDuration: 1300,
+
   // --- Love letter (each item becomes one short paragraph) ---
   loveLetterParagraphs: [
     "Tannu, happy birthday. I've read this sentence back about ten times now trying to make it sound big enough for what I actually feel, and it never quite gets there so I'll just say it plainly instead.",
@@ -66,7 +73,7 @@ export const content = {
     "May all your dreams come true, one by one.",
     "May you always be surrounded by people who love you.",
     "May we keep finding reasons to smile together.",
-    "May 21 be the year everything you've worked quietly for starts falling into place.",
+    "May 27 be the year everything you've worked quietly for starts falling into place.",
   ] as string[],
 
   // --- Photos ---
