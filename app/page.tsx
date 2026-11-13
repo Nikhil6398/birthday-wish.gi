@@ -1,12 +1,16 @@
+
 "use client";
 
 import { useRef, useState } from "react";
 import { content } from "@/data/content";
 import { getLenis } from "@/components/lenis-singleton";
+
 import StageTransition from "@/components/StageTransition";
 import LoadingScreen from "@/components/LoadingScreen";
 import PinScreen from "@/components/PinScreen";
 import IntroScreen from "@/components/IntroScreen";
+import { HeartTouch } from "@/components/HeartTouch";
+
 import Hero from "@/components/Hero";
 import LoveLetter from "@/components/LoveLetter";
 import ReasonsWhy from "@/components/ReasonsWhy";
@@ -24,12 +28,14 @@ type Stage = "loading" | "locked" | "intro" | "main";
 export default function Home() {
   const [stage, setStage] = useState<Stage>("loading");
   const [showMusicHint, setShowMusicHint] = useState(false);
-  // Every fresh page load re-asks for the PIN when one is set — nothing is
-  // remembered across visits, so re-opening the link always shows the lock
-  // screen again instead of skipping straight to "Open your gift".
-  const nextAfterLoading = useRef<"locked" | "intro">(content.accessPin ? "locked" : "intro");
 
-  const handleLoadingDone = () => setStage(nextAfterLoading.current);
+  const nextAfterLoading = useRef<"locked" | "intro">(
+    content.accessPin ? "locked" : "intro"
+  );
+
+  const handleLoadingDone = () => {
+    setStage(nextAfterLoading.current);
+  };
 
   const handleUnlock = () => {
     setStage("intro");
@@ -43,7 +49,9 @@ export default function Home() {
   const handleReplay = () => {
     setStage("intro");
     setShowMusicHint(false);
+
     const lenis = getLenis();
+
     if (lenis) {
       lenis.scrollTo(0, { immediate: true });
     } else {
@@ -53,9 +61,15 @@ export default function Home() {
 
   return (
     <>
+      {/* ❤️ Global floating heart touch effect */}
+      <HeartTouch />
+
+      {/* Loading, PIN and intro screens */}
       {stage !== "main" ? (
         <StageTransition stageKey={stage}>
-          {stage === "loading" ? <LoadingScreen onDone={handleLoadingDone} /> : null}
+          {stage === "loading" ? (
+            <LoadingScreen onDone={handleLoadingDone} />
+          ) : null}
 
           {stage === "locked" ? (
             <PinScreen
@@ -67,11 +81,15 @@ export default function Home() {
           ) : null}
 
           {stage === "intro" ? (
-            <IntroScreen partnerName={content.partnerName} onOpened={handleOpened} />
+            <IntroScreen
+              partnerName={content.partnerName}
+              onOpened={handleOpened}
+            />
           ) : null}
         </StageTransition>
       ) : null}
 
+      {/* Main birthday website */}
       <main>
         <Hero
           partnerName={content.partnerName}
@@ -86,7 +104,10 @@ export default function Home() {
           paragraphs={content.loveLetterParagraphs}
         />
 
-        <ReasonsWhy partnerName={content.partnerName} reasons={content.reasonsWhy} />
+        <ReasonsWhy
+          partnerName={content.partnerName}
+          reasons={content.reasonsWhy}
+        />
 
         <Gallery photos={content.galleryPhotos} />
 
@@ -104,9 +125,16 @@ export default function Home() {
           nextMeetupWhenLabel={content.nextMeetupWhenLabel}
         />
 
-        <ReunionList items={content.reunionBucketList} location={content.nextMeetupLocation} />
+        <ReunionList
+          items={content.reunionBucketList}
+          location={content.nextMeetupLocation}
+        />
 
-        <Wishes intro={content.wishesIntro} partnerName={content.partnerName} wishes={content.wishes} />
+        <Wishes
+          intro={content.wishesIntro}
+          partnerName={content.partnerName}
+          wishes={content.wishes}
+        />
 
         <Surprise
           hugMessage={content.hugMessage}
@@ -123,7 +151,12 @@ export default function Home() {
         />
       </main>
 
-      <MusicPlayer songUrl={content.songUrl} songTitle={content.songTitle} showHint={showMusicHint} />
+      {/* Background music */}
+      <MusicPlayer
+        songUrl={content.songUrl}
+        songTitle={content.songTitle}
+        showHint={showMusicHint}
+      />
     </>
   );
 }
